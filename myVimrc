@@ -91,6 +91,7 @@ set smartindent
 set expandtab
 set list
 set number
+set laststatus=2
 set notextmode
 set hlsearch
 set mouse=a
