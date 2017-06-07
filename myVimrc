@@ -126,7 +126,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 set nu
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 "set editing-mode vi
 
