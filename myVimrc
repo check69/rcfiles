@@ -128,6 +128,17 @@ set nu
 
 set clipboard=unnamedplus
 
+"Change register when delete
+nnoremap x "-x
+nnoremap X "-X
+nnoremap d "-d
+nnoremap D "-D
+vnoremap d "-d
+
+"Paste register - when push - key before paste
+nnoremap -p "-p
+nnoremap -P "-P
+
 "set editing-mode vi
 
 " Remove trailing spaces on save file
