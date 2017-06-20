@@ -1,7 +1,7 @@
 set nocompatible              " required
 filetype off                  " required
 
-:let mapleader = "_"
+let mapleader = "`"
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -13,6 +13,7 @@ call vundle#begin()
 Bundle 'OmniCppComplete'
 Bundle 'Valloric/YoucompleteMe'
 Bundle 'SirVer/ultisnips'
+Bundle 'rhysd/vim-clang-format'
 Bundle 'honza/vim-snippets'
 Bundle 'majutsushi/tagbar'
 
@@ -82,10 +83,10 @@ au BufNewFile,BufRead *.js, *.html, *.css
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 set backspace=indent,eol,start
 set lcs=trail:·,tab:>>,nbsp:·
-set softtabstop=2
+set softtabstop=4
 set tabstop=8
 set autoindent
-set shiftwidth=2
+set shiftwidth=4
 set smarttab
 set smartindent
 set expandtab
@@ -181,4 +182,23 @@ let python_highlight_all=1
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
-set cino=N-s
+let g:clang_format#style_options = {
+            \ "BasedOnStyle": "LLVM",
+            \ "BreakBeforeBraces": "Allman",
+            \ "ColumnLimit": 100,
+            \ "IndentCaseLabels": "true",
+            \ "IndentWidth": 4,
+            \ "NamespaceIndentation": "All",
+            \ "PointerAlignment": "Right",
+            \ "Standard": "Cpp11",
+            \ "UseTab": "Never"}
+
+" map to <Leader>cf in C++ code
+autocmd FileType c,cpp,hpp,h nnoremap <buffer><Leader>a :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,hpp,h vnoremap <buffer><Leader>a :ClangFormat<CR>
+" if you install vim-operator-user
+autocmd FileType c,cpp,hpp,h map <buffer><Leader>x <Plug>(operator-clang-format)
+" Toggle auto formatting:
+nmap <Leader>C :ClangFormatAutoToggle<CR>
+
+let g:clang_format#auto_format = 1
