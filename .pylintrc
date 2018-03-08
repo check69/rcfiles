@@ -13,8 +13,8 @@ rcfile=.pylintrc
 
 # Python code to execute, usually for sys.path manipulation such as
 # pygtk.require().
-#init-hook='import sys; sys.path.append("/home/acheca/projects/myTecos/tectest/testFramework/testFramework")'
-init-hook='base_dir="tectest"; import sys,os,re; _re=re.search(r".+\/" + base_dir, os.getcwd()); project_dir = _re.group() if _re else os.path.join(os.getcwd(), base_dir); sys.path.append(project_dir + "/testFramework/testFramework")'
+# We add the relative path from base dir
+init-hook='base_dir="name_of_the_folder"; import sys,os,re; _re=re.search(r".+\/" + base_dir, os.getcwd()); project_dir = _re.group() if _re else os.path.join(os.getcwd(), base_dir); sys.path.append(project_dir + "/additional/path")'
 # Profiled execution.
 profile=no
 
